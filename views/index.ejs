@@ -1,0 +1,51 @@
+<!-- 
+Name: Gian Desiderio
+Student id: 301296686
+Date: 10-06-2023
+ -->
+
+<%- include partials/header.ejs %>
+<%- include partials/main_nav.ejs %>
+
+  <!-- Main Content-->
+  <main class="container">
+    <div class="jumbotron">
+      <h1 class="display-4">Welcome to <%= title %> page </h1>
+    
+      <!-- Conditional Page Loading-->
+      <% if(title=="home" ) { %>
+        <%- include partials/home %>
+
+          <%} else if(title=="about" ) { %> 
+            <%- include partials/about %> 
+
+            <%} else if(title=="projects" ) { %> 
+              <%- include partials/projects %> 
+
+              <%} else if(title=="services" ) { %> 
+                <%- include partials/services %>
+
+                <%} else if(title=="contact" ) { %> 
+                  <%- include partials/contact %> 
+                  <% } %>
+
+                    <%- include partials/footer.ejs %>
+                
+    </div>
+    </div>
+  </main>
+
+  <%- include partials/bottom_nav.ejs %>
+  <%- include partials/footer.ejs%>
+
+
+
+
+
+
+
+
+
+
+
+
