@@ -4,8 +4,8 @@
  * Module dependencies.
  */
 
-var app = require('./app');
-var debug = require('debug')('classproject:server');
+var app = require('./config/app');
+var debug = require('debug')('week-4:server');
 var http = require('http');
 
 /**
@@ -26,7 +26,6 @@ var server = http.createServer(app);
  */
 
 server.listen(port);
-console.log('Server is running in http://localhost:${port}');
 server.on('error', onError);
 server.on('listening', onListening);
 
