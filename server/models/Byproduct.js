@@ -4,7 +4,7 @@ let mongoose = require('mongoose');
 
 let ProductModel = mongoose.Schema({
     Name: String,
-    Expiry: String,
+    expiry: String,
     Description: String
 },
 {

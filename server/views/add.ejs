@@ -1,0 +1,55 @@
+<!-- 
+Name: Gian Desiderio
+Student id: 301296686
+Date: 10-06-2023
+ -->
+ <%- include partials/header.ejs %>
+
+ <%- include partials/main_nav.ejs %>
+
+<!-- Content for the Add Page-->
+
+    <div class="container">
+        <div class="row">
+            <div class="offset-md-1 col-md-6"></div>
+            <h1><%= title %></h1>
+
+            <form class="form" method="POST">
+                <div class="form-group">
+                    <label for="nameTextField">Product Name</label>
+                    <input type="text" class="form-control"
+                    id="nameTextField"
+                    placeholder="Enter the Product name"
+                    name="name" require>
+                </div>
+
+                <div class="form-group">
+                    <label for="expiryTextField">Expiry</label>
+                    <input type="text" class="form-control"
+                    id="expiryTextField"
+                    placeholder="Enter the expiry date"
+                    name="expiry" require>
+                </div>
+
+                <div class="form-group">
+                    <label for="descriptionTextArea">Description</label>
+                    <textarea type="text" class="form-control"
+                    id="descriptionTextArea"
+                    placeholder="Enter the brief description"
+                    name="description" require></textarea>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+ <%- include partials/bottom_nav.ejs %>  
+ 
+ <%- include partials/footer.ejs %>
