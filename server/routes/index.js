@@ -1,39 +1,44 @@
-var express = require('express');
+let express = require('express');
 var router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Home'});
-});
+let indexController = require('../controllers/index');
 
 /* GET home page. */
-router.get('/home', function(req, res, next) {
-  res.render('index', { title: 'home'});
-});
+router.get('/', indexController.displayHomePage);
+
+/* GET home page. */
+router.get('/home', indexController.displayHomePage);
 
 /* GET About Us page. */
-router.get('/about', function(req, res, next) {
-  res.render('index', { title: 'about'});
-});
+router.get('/about', indexController.displayAboutPage);
 
 /* GET Products page. */
-router.get('/projects', function(req, res, next) {
-  res.render('index', { title: 'projects'});
-});
+router.get('/projects', indexController.displayProjectsPage);
 
 /* GET Services page. */
-router.get('/services', function(req, res, next) {
-  res.render('index', { title: 'services'});
-});
+router.get('/services', indexController.displayServicesPage);
+
+/* GET Business Contact List Us page. */
+router.get('/businesscontactlist', indexController.displayBusinesscontactlistPage);
 
 /* GET Contact Us page. */
-router.get('/contact', function(req, res, next) {
-  res.render('index', { title: 'contact'});
-});
+router.get('/contact', indexController.displayContactPage);
 
 /* GET Contact Us page. */
-router.get('/login', function(req, res, next) {
-  res.render('index', { title: 'login'});
-});
+router.get('/login', indexController.displayLoginPage);
+
+/* GET Login POst Process */
+router.get('/login', indexController.processLoginPage);
+
+/* GET Register Page */
+router.get('/register', indexController.displayRegisterpage);
+
+/* GET Register POST Page */
+router.get('/register', indexController.processRegisterPage);
+
+/* PERFORM LOGOUT */
+router.get('/logout', indexController.performLogout);
+
+
 
 module.exports = router;

@@ -13,42 +13,47 @@ Date: 10-06-2023
         <div class="row">
             <div class="offset-md-1 col-md-6"></div>
             <h1><%= title %></h1>
+            <style>
+                body {
+                  background-image: url('Assets/images/techback.jpg');
+                  background-size: cover;
+                }
+             
+              </style>
 
             <form class="form" method="POST">
                 <div class="form-group">
-                    <label for="nameTextField">Product Name</label>
+                    <label for="nameTextField">Contact Name</label>
                     <input type="text" class="form-control"
                     id="nameTextField"
-                    placeholder="Enter the Product name"
+                    placeholder="Enter the Contact name"
                     name="name" require>
                 </div>
 
                 <div class="form-group">
-                    <label for="expiryTextField">Expiry</label>
+                    <label for="contactTextField">Contact Number</label>
                     <input type="text" class="form-control"
-                    id="expiryTextField"
-                    placeholder="Enter the expiry date"
-                    name="expiry" require>
+                    id="contactTextField"
+                    placeholder="Enter Contact Number"
+                    name="contact" require>
                 </div>
 
                 <div class="form-group">
-                    <label for="descriptionTextArea">Description</label>
+                    <label for="emailaddressTextArea">Email Address</label>
                     <textarea type="text" class="form-control"
-                    id="descriptionTextArea"
-                    placeholder="Enter the brief description"
-                    name="description" require></textarea>
+                    id="emailaddressTextArea"
+                    placeholder="Enter Email Address"
+                    name="emailaddress" require></textarea>
                 </div>
+
+                <button class="btn btn-primary" type="submit">
+                    <i class="fas fa-edit"></i> Submit</button>
+                    <a href="/data" class="btn btn-warning">
+                        <i class="fas fa-undo"></i> Cancel</a>
 
             </form>
         </div>
     </div>
-
-
-
-
-
-
-
 
  <%- include partials/bottom_nav.ejs %>  
  

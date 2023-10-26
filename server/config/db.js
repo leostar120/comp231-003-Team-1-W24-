@@ -4,7 +4,10 @@
 
 module.exports = 
 {
-    "URI":"mongodb://127.0.0.1:27017/Products/"
+    //"URI":"mongodb://127.0.0.1:27017/Products/",
+    "URI":"mongodb+srv://gian:b09ZOG3uLyq2kOqv@gpcdmongodbserver.zlzsnom.mongodb.net/contact_business?retryWrites=true&w=majority",
+
+    "Secret": 'SomeSecret'
 }
 
 
