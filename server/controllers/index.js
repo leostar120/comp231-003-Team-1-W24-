@@ -35,6 +35,10 @@ module.exports.displayLoginPage = (req, res, next ) => {
     res.render('index', {title: 'login'});
 }
 
+module.exports.displayListPage = (req, res, next) => {
+    res.render('index', {title: 'data'});
+}
+
 module.exports.displayLoginPage = (req, res, next) => {
     //check if the user is already logged in
     if(!req.user)

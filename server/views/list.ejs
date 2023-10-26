@@ -8,41 +8,30 @@ Date: 10-06-2023
  <%- include partials/header.ejs %>
 
  <%- include partials/main_nav.ejs %>
- <style>
-    .table-container {
-        max-height: 800px; /* Adjust the desired height */
-        overflow-y: scroll;
-        
-    }
 
-
-</style>
- 
- <div class="table-container">
-    <table class="table table-bordered table-striped table-hover">
+    
         <main class="container">
             <div class="row">
-                <div class="offset-md-1 col-md-10">
-                    <h1 class="text-center"><%= title %></h1>
-
+                <div class="offset-md-offset-3 col-md-12">
+                    <h1><%= title %></h1>
                     <style>
                         body {
                           background-image: url('Assets/images/techback.jpg');
                           background-size: cover;
-                        }
-                     
+                        }                    
                       </style>
+                    <br>
                   <div class="text-center">
                     <a href="/data/add" class="btn btn-primary" role="button">
                         <i class="fas fa-plus-circle"></i> Add Contact Info
                     </a>
-                </div>
+                        </div>
                     <br>
                     <table class="table table-bordered table-striped table-hover">
                        <!-- Header Row -->
                         <tr class="d-flex">
-                            <th class="text-center col-1">Name</th>
-                            <th class="text-center col-1">Contact</th>
+                            <th class="text-center col-3">Name</th>
+                            <th class="text-center col-2">Contact</th>
                             <th class="text-center col-3">Email address</th>
                             <th class="text-center col-2"></th>
                             <th class="text-center col-2"></th>
@@ -52,8 +41,8 @@ Date: 10-06-2023
                         <% for(let count=0; count <  productlist.length ; count++)  { %>
                            <%- console.log("Debug:", productlist[count]) %>
                             <tr class="d-flex">
-                                <td class="text-center col-1"><%= productlist[count].name %></td>
-                                <td class="text-center col-1"><%= productlist[count].contact %></td>
+                                <td class="text-center col-3"><%= productlist[count].name %></td>
+                                <td class="text-center col-2"><%= productlist[count].contact %></td>
                                 <td class="text-center col-3"><%= productlist[count].emailaddress %></td>
                                 
                                <td class="text-center col-2">
@@ -70,8 +59,8 @@ Date: 10-06-2023
                 </div>
             </div>
         </main>
-    </table>
-</div>
+
+
  
    
  <%- include partials/bottom_nav.ejs %>  

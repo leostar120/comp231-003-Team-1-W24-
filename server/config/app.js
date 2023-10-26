@@ -9,84 +9,43 @@ let express = require('express');
 let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
-let app = express();
-
-// database setup
-let mongoose = require('mongoose');
-let DB = require('./db');
 
 // modules for authentication
-
 let session = require('express-session');
 let passport = require('passport');
 let passportLocal = require('passport-local');
 let localStrategy = passportLocal.Strategy;
 let flash = require('connect-flash');
 
+// database setup
+let mongoose = require('mongoose');
+let DB = require('./db');
+
 // MONGODB Compass
-/*
 //point to your DB, URI
 mongoose.connect(DB.URI, {useNewUrlParser: true, useUnifiedTopology: true});
 let mongoDB = mongoose.connection;
 mongoDB.on('error', console.error.bind(console,'Error in Connection'));
 mongoDB.once('open', ()=> {
-  console.log('Connected with MongoDB......Success!!');
-});
-*/
-
-/*
-// connect to mongodb ATLAS
-const { MongoClient } = require("mongodb");
-
-const uri = "mongodb+srv://leoge120:kawasaki123456@gpcdmongodbserver.zlzsnom.mongodb.net/";
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-
-async function connectToMongo() {
-    try {
-        await client.connect();
-        console.log("Connected to MongoDB Atlas");
-    } catch (err) {
-        console.error(err);
-    }
-}
-
-connectToMongo();
-
-
-mongoose.connect('mongodb+srv://leoge120:kawasaki123456@gpcdmongodbserver.zlzsnom.mongodb.net/', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-});
-*/
-
-
-// connecto mongo COMPASS
-
-const { MongoClient } = require("mongodb");
-
-const uri = "mongodb+srv://gian:b09ZOG3uLyq2kOqv@gpcdmongodbserver.zlzsnom.mongodb.net/contact_business?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-
-async function connectToMongo() {
-    try {
-        await client.connect();
-        console.log("Connected to MongoDB Atlas");
-    } catch (err) {
-        console.error(err);
-    }
-}
-
-connectToMongo();
-
-
-mongoose.connect('mongodb+srv://gian:b09ZOG3uLyq2kOqv@gpcdmongodbserver.zlzsnom.mongodb.net/contact_business?retryWrites=true&w=majority', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+  console.log('Connected to MongoDB Atlas!!');
 });
 
 let indexRouter = require('../routes/index');
 let usersRouter = require('../routes/users');
 let productRouter = require('../routes/Byproduct');
+
+let app = express();
+
+// view engine setup
+app.set('views', path.join(__dirname, '../views'));
+app.set('view engine', 'ejs'); // express  -e
+
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, '../../public')));
+app.use(express.static(path.join(__dirname, '../../node_modules')));
 
 //setup express session
 app.use(session({
@@ -116,21 +75,10 @@ passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-// view engine setup
-app.set('views', path.join(__dirname, '../views'));
-app.set('view engine', 'ejs'); // express  -e
-
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, '../../public')));
-app.use(express.static(path.join(__dirname, '../../node_modules')));
-
-
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/data',productRouter);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -146,5 +94,28 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', { title: 'Error'});
 });
+
+/*
+// connec to mongo ATLAS
+const { MongoClient } = require("mongodb");
+
+const uri = "mongodb+srv://gian:b09ZOG3uLyq2kOqv@gpcdmongodbserver.zlzsnom.mongodb.net/contact_business?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+
+async function connectToMongo() {
+    try {
+        await client.connect();
+        console.log("Connected to MongoDB Atlas");
+    } catch (err) {
+        console.error(err);
+    }
+}
+connectToMongo();
+
+mongoose.connect('mongodb+srv://gian:b09ZOG3uLyq2kOqv@gpcdmongodbserver.zlzsnom.mongodb.net/contact_business?retryWrites=true&w=majority', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+});
+*/
 
 module.exports = app;

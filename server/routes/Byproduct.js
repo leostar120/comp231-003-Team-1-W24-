@@ -1,32 +1,24 @@
 let express = require('express');
 let router = express.Router();
 let mongoose = require('mongoose');
-
 let passport = require('passport');
-
 let productController = require('../controllers/Byproduct');
 
-// helper function for guard purposes
+let ByProduct = require('../models/Byproduct');
 
-function requireAuth(req, res, next)
-{
-    // check if the user is logged in 
-    if(!req.isAuthenticated())
-    {
+// Helper function for guard purposes
+function requireAuth(req, res, next) {
+    // Check if the user is logged in
+    if (!req.isAuthenticated()) {
         return res.redirect('/login');
+    } else {
+        next();
     }
 }
 
 
-
-
-// connect with our model
-let ByProduct = require('../models/Byproduct');
-
-
-
 /* Get route for the Data List Page - READ OPERATION */
-router.get('/',  async (req, res, next) => {
+router.get('/', async (req, res, next) => {
     try {
         const ProductList = await ByProduct.find();
         res.render('list', { title: 'Business Contact List', productlist: ProductList });
@@ -72,15 +64,14 @@ router.get('/edit/:id', async (req, res, next) => {
 });
 
 /* POST route for processing EDIT Page - UPDATE OPERATION */
-router.post('/edit/:id',requireAuth, (req, res, next) => {
+router.post('/edit/:id', (req, res, next) => {
     const id = req.params.id;
 
-    const updateUser = user ({
-        "_id": id,
-        "Name": req.body.name,
-        "expiry": req.body.expiry,
-        "Description": req.body.Description
-    });
+    const updateUser = {
+        "name": req.body.name,
+        "contact": req.body.contact,
+        "emailaddress": req.body.emailaddress
+    };
 
     ByProduct.findByIdAndUpdate(id, updateUser)
         .then(() => {
