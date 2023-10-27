@@ -17,31 +17,39 @@ Date: 10-06-2023
                           background-size: cover;
                         }                    
                       </style>
+                      <% if(typeof displayName == 'string' && displayName) { %>
                     <br>
                   <div class="text-center">
                     <a href="/data/add" class="btn btn-primary" role="button">
                         <i class="fas fa-plus-circle"></i> Add Contact Info
+                        <% } %>
                     </a>
                         </div>
                     <br>
                     <table class="table table-bordered table-striped table-hover">
                        <!-- Header Row -->
                         <tr class="d-flex">
+                            <% if(typeof displayName == 'string' && displayName) { %>
                             <th class="text-center col-3">Name</th>
                             <th class="text-center col-2">Contact</th>
-                            <th class="text-center col-3">Email address</th>
+                            <th class="text-center col-3">Email address</th>                           
                             <th class="text-center col-2"></th>
-                            <th class="text-center col-2"></th>
+                             <th class="text-center col-2"></th>
+                            <% } else {  %>
+                            <th class="text-center col-3">Name</th>
+                            <th class="text-center col-2">Contact</th>
+                            <th class="col-7">Email address</th>                                     
+                            <% } %>
                         </tr>
        
                         <!-- Repeatable Template Row -->
                         <% for(let count=0; count <  productlist.length ; count++)  { %>
                            <%- console.log("Debug:", productlist[count]) %>
                             <tr class="d-flex">
+                                <% if(typeof displayName == 'string' && displayName) { %>
                                 <td class="text-center col-3"><%= productlist[count].name %></td>
                                 <td class="text-center col-2"><%= productlist[count].contact %></td>
-                                <td class="text-center col-3"><%= productlist[count].emailaddress %></td>
-                                
+                                <td class="text-center col-3"><%= productlist[count].emailaddress %></td>                                         
                                <td class="text-center col-2">
                                    <a href="/data/edit/<%= productlist[count]._id %>" class="btn btn-primary btn-sm">
                                    <i class="fas fa-pencil-alt"></i> Edit</a>
@@ -50,6 +58,11 @@ Date: 10-06-2023
                                    <a href="/data/delete/<%= productlist[count]._id %>" class="btn btn-danger btn-sm">                              
                                    <i class="fas fa-trash-alt"></i> Delete</a>
                                </td>
+                               <% } else { %>
+                                <td class="text-center col-3"><%= productlist[count].name %></td>
+                                <td class="text-center col-2"><%= productlist[count].contact %></td>
+                                <td class="col-7"><%= productlist[count].emailaddress %></td>   
+                               <% } %>
                             </tr>
                         <% } %>
                     </table>

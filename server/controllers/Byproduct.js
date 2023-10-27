@@ -12,7 +12,9 @@ let Byproduct = require('../models/Byproduct');
 module.exports.displayProductList = async (req, res, next) => {
     try {
         const ProductList = await Byproduct.find();
-        res.render('list', { title: 'Business Contact List', productlist: ProductList });
+        res.render('list', { title: 'Business Contact List', 
+        productlist: ProductList, 
+        displayName: req.user ? req.user.displayName : '' });
     } catch (err) {
         console.error(err);
         next(err); // Pass the error to the error handling middleware
@@ -20,7 +22,8 @@ module.exports.displayProductList = async (req, res, next) => {
 }
 
 module.exports.displayAddPage = (req, res, next) => {
-    res.render('add', { title: 'Add Contact List' });
+    res.render('add', { title: 'Add Contact List',
+    displayName: req.user ? req.user.displayName : ''  });
 }
 
 module.exports.performDelete = (req, res, next) => {
@@ -40,7 +43,8 @@ module.exports.displayEditPage = async (req, res, next) => {
     try {
         const id = req.params.id;
         const userToEdit = await Byproduct.findById(id);
-        res.render('edit', { title: 'Edit User', user: userToEdit });
+        res.render('edit', { title: 'Edit User', user: userToEdit,
+        displayName: req.user ? req.user.displayName : ''  });
     } catch (err) {
         console.error(err);
         next(err); // Pass the error to the error handling middleware

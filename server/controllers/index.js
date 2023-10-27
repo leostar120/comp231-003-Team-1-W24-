@@ -8,35 +8,35 @@ let userModel = require('../models/user');
 let User = userModel.User; // alias
 
 module.exports.displayHomePage = (req, res, next ) => {
-    res.render('index', {title: 'home'});
+    res.render('index', {title: 'home', displayName: req.user ? req.user.displayName : ''});
 }
 
 module.exports.displayAboutPage = (req, res, next ) => {
-    res.render('index', {title: 'about'});
+    res.render('index', {title: 'about',displayName: req.user ? req.user.displayName : '' });
 }
 
 module.exports.displayProjectsPage = (req, res, next ) => {
-    res.render('index', {title: 'projects'});
+    res.render('index', {title: 'projects', displayName: req.user ? req.user.displayName : ''});
 }
 
 module.exports.displayServicesPage = (req, res, next ) => {
-    res.render('index', {title: 'services'});
+    res.render('index', {title: 'services', displayName: req.user ? req.user.displayName : ''});
 }
 
 module.exports.displayBusinesscontactlistPage = (req, res, next ) => {
-    res.render('index', {title: 'businesscontactlist'});
+    res.render('index', {title: 'businesscontactlist', displayName: req.user ? req.user.displayName : ''});
 }
 
 module.exports.displayContactPage = (req, res, next ) => {
-    res.render('index', {title: 'contact'});
+    res.render('index', {title: 'contact', displayName: req.user ? req.user.displayName : ''});
 }
 
 module.exports.displayLoginPage = (req, res, next ) => {
-    res.render('index', {title: 'login'});
+    res.render('index', {title: 'login', displayName: req.user ? req.user.displayName : ''});
 }
 
 module.exports.displayListPage = (req, res, next) => {
-    res.render('index', {title: 'data'});
+    res.render('index', {title: 'data', displayName: req.user ? req.user.displayName : ''});
 }
 
 module.exports.displayLoginPage = (req, res, next) => {
