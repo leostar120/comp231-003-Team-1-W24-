@@ -2,9 +2,9 @@ let express = require('express');
 let router = express.Router();
 let mongoose = require('mongoose');
 let passport = require('passport');
+
 let productController = require('../controllers/Byproduct');
 
-let ByProduct = require('../models/Byproduct');
 
 // Helper function for guard purposes
 function requireAuth(req, res, next) {
@@ -16,85 +16,22 @@ function requireAuth(req, res, next) {
     }
 }
 
-
 /* Get route for the Data List Page - READ OPERATION */
-router.get('/', async (req, res, next) => {
-    try {
-        const ProductList = await ByProduct.find();
-        res.render('list', { title: 'Business Contact List', productlist: ProductList });
-    } catch (err) {
-        console.error(err);
-        next(err); // Pass the error to the error handling middleware
-    }
-});
+router.get('/', productController.displayProductList);
 
 /* GET route for displaying ADD Page - CREATE OPERATION */
-router.get('/add', (req, res, next) => {
-    res.render('add', { title: 'Add' });
-});
+router.get('/add', productController.displayAddPage);
 
 /* POST route for processing ADD Page - CREATE OPERATION */
-router.post('/add', (req, res, next) => {
-    const newUser = new ByProduct({
-        "name": req.body.name,
-        "contact": req.body.contact,
-        "emailaddress": req.body.emailaddress
-    });
-
-    newUser.save()
-        .then((Byproduct) => {
-            res.redirect('/data');
-        })
-        .catch((err) => {
-            console.log(err);
-            res.end(err);
-        });
-});
+router.post('/add', productController.processAddPage );
 
 /* GET route for displaying EDIT Page - UPDATE OPERATION */
-router.get('/edit/:id', async (req, res, next) => {
-    try {
-        const id = req.params.id;
-        const userToEdit = await ByProduct.findById(id);
-        res.render('edit', { title: 'Edit User', user: userToEdit });
-    } catch (err) {
-        console.error(err);
-        next(err); // Pass the error to the error handling middleware
-    }
-});
+router.get('/edit/:id', productController.displayEditPage );
 
 /* POST route for processing EDIT Page - UPDATE OPERATION */
-router.post('/edit/:id', (req, res, next) => {
-    const id = req.params.id;
-
-    const updateUser = {
-        "name": req.body.name,
-        "contact": req.body.contact,
-        "emailaddress": req.body.emailaddress
-    };
-
-    ByProduct.findByIdAndUpdate(id, updateUser)
-        .then(() => {
-            res.redirect('/data');
-        })
-        .catch((err) => {
-            console.log(err);
-            res.end(err);
-        });
-});
+router.post('/edit/:id',productController.processEditPage );
 
 /* GET to perform DELETION - DELETE OPERATION */
-router.get('/delete/:id', (req, res, next) => {
-    const id = req.params.id;
-
-    ByProduct.findByIdAndRemove(id)
-        .then(() => {
-            res.redirect('/data');
-        })
-        .catch((err) => {
-            console.log(err);
-            res.end(err);
-        });
-});
+router.get('/delete/:id',productController.performDelete );
 
 module.exports = router;

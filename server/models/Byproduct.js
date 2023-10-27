@@ -12,4 +12,4 @@ let ProductModel = mongoose.Schema({
 collection:"business"
 
 });
-module.exports = mongoose.model('ByProduct',ProductModel);
+module.exports = mongoose.model('Byproduct',ProductModel);
