@@ -24,21 +24,21 @@ router.get('/businesscontactlist', indexController.displayBusinesscontactlistPag
 /* GET Contact Us page. */
 router.get('/contact', indexController.displayContactPage);
 
-/* GET Contact Us page. */
+
+
+/* GET route for displaying Login Page */
 router.get('/login', indexController.displayLoginPage);
 
-/* GET Login POst Process */
-router.get('/login', indexController.processLoginPage);
+/* POST route for processing Login Page -  */
+router.post('/login', indexController.processLoginPage );
 
-/* GET Register Page */
-router.get('/register', indexController.displayRegisterpage);
+/* GET route for displaying Register Page */
+router.get('/register', indexController.displayRegisterPage);
 
-/* GET Register POST Page */
-router.get('/register', indexController.processRegisterPage);
+/* POST route for processing Register Page -  */
+router.post('/register', indexController.processRegisterPage );
 
-/* PERFORM LOGOUT */
-router.get('/logout', indexController.performLogout);
-
-
+/* GET to perform UserLogout - */
+router.get('/logout', indexController.performLogout );
 
 module.exports = router;
