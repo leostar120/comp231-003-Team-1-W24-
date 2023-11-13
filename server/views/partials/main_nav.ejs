@@ -1,7 +1,6 @@
 <!-- 
-Name: Gian Desiderio
-Student id: 301296686
-Date: 10-06-2023
+GROUP 3 PROJECT
+Date: 11-12-2023
  -->
 
 <!-- Main Navigation -->
@@ -15,7 +14,8 @@ Date: 10-06-2023
 <body>
 <!-- Navigation Bar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="/">COMP229</a>
+  <a class="navbar-brand" href="/">
+    <img src="Assets/images/teamlogo.jpg" alt="team logo" height="50">COMP229</a>
   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -38,38 +38,14 @@ Date: 10-06-2023
         <a class="nav-link" href="/about"><i class="fas fa-info-circle"></i> About </a>
       </li>
 
-      <% if (title == "Products") { %>
-      <li class="nav-item active">
-      <% } else  { %>
-      <li class="nav-item">
-      <% } %>
-        <a class="nav-link" href="/projects"><i class="fab fa-elementor"></i> Projects </a>
-      </li>
-
-      <% if (title == "Services") { %>
-      <li class="nav-item active">
-      <% } else  { %>
-      <li class="nav-item">
-      <% } %>
-        <a class="nav-link" href="/services"><i class="fas fa-cogs"></i> Services </a>
-      </li>
-
       <% if (title == "BusinessContact List") { %>
         <li class="nav-item active">
         <% } else  { %>
         <li class="nav-item">
         <% } %>
-          <a class="nav-link" href="/data"><i class="fa-regular fa-address-card"></i> Business Contact List  </a>
+          <a class="nav-link" href="/data"><i class="fa-regular fa-address-card"></i> Incident Survey List  </a>
         </li>
-
-      <% if (title == "Contact") { %>
-      <li class="nav-item active">
-      <% } else  { %>
-      <li class="nav-item">
-      <% } %>
-        <a class="nav-link" href="/contact"><i class="fas fa-mobile-alt"></i> Contact </a>
-      </li>
-
+        
        <% if(typeof displayName == 'string' && displayName) { %>
         <li class="navbar-text"><i class="fas fa-lg fa-user"></i>Welcome, <%= displayName %></li>
         <li class="nav-item"><a href="/logout" class="nav-link">

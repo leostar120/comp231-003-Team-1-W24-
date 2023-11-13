@@ -1,7 +1,6 @@
 /*
-Name: Gian Desiderio
-Student id: 301296686
-Date: 10-06-2023
+GROUP 3 PROJECT
+Date: 11-12-2023
 */
 // installed 3rd party packages
 let createError = require('http-errors');
@@ -97,27 +96,6 @@ app.use(function(err, req, res, next) {
   res.render('error', { title: 'Error'});
 });
 
-/*
-// connec to mongo ATLAS
-const { MongoClient } = require("mongodb");
 
-const uri = "mongodb+srv://gian:b09ZOG3uLyq2kOqv@gpcdmongodbserver.zlzsnom.mongodb.net/contact_business?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-
-async function connectToMongo() {
-    try {
-        await client.connect();
-        console.log("Connected to MongoDB Atlas");
-    } catch (err) {
-        console.error(err);
-    }
-}
-connectToMongo();
-
-mongoose.connect('mongodb+srv://gian:b09ZOG3uLyq2kOqv@gpcdmongodbserver.zlzsnom.mongodb.net/contact_business?retryWrites=true&w=majority', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-});
-*/
 
 module.exports = app;
