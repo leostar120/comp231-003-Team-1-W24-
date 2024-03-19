@@ -22,6 +22,9 @@ function requireAuth(req, res, next) {
 /* Get route for the Data List Page - READ OPERATION */
 router.get('/', productController.displayProductList);
 
+/* Get route for the Shopping Cart List Page - READ Operation */
+router.get('/',productController.displayShoppingCart );
+
 /* GET route for displaying ADD Page - CREATE OPERATION */
 router.get('/add', requireAuth, productController.displayAddPage);
 

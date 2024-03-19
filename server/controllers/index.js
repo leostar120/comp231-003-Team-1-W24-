@@ -39,6 +39,11 @@ module.exports.displayListPage = (req, res, next) => {
     res.render('index', {title: 'data', displayName: req.user ? req.user.displayName : ''});
 }
 
+module.exports.displayShoppingCart = (req, res, next) => {
+    res.render('index', {title: 'data', displayName: req.user ? req.user.displayName : ''});
+}
+
+
 module.exports.displayLoginPage = (req, res, next) => {
     //check if the user is already logged in
     if(!req.user)

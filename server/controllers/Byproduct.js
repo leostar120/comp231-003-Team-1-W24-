@@ -12,7 +12,19 @@ let Byproduct = require('../models/Byproduct');
 module.exports.displayProductList = async (req, res, next) => {
     try {
         const ProductList = await Byproduct.find();
-        res.render('list', { title: 'Incident Survey list', 
+        res.render('list', { title: 'Shopping list', 
+        productlist: ProductList, 
+        displayName: req.user ? req.user.displayName : '' });
+    } catch (err) {
+        console.error(err);
+        next(err); // Pass the error to the error handling middleware
+    }
+}
+
+module.exports.displayShoppingCart = async (req, res, next) => {
+    try {
+        const ProductList = await Byproduct.find();
+        res.render('list', { title: 'Shopping Cart', 
         productlist: ProductList, 
         displayName: req.user ? req.user.displayName : '' });
     } catch (err) {

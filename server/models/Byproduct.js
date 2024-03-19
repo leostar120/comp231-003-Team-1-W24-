@@ -3,13 +3,13 @@ let mongoose = require('mongoose');
 // create a model class
 
 let ProductModel = mongoose.Schema({
-    incident: String,
+    item: String,
     description: String,
-    date: String
+    price: String
 },
 
 {
-collection:"incident"
+collection:"shopping"
 
 });
 module.exports = mongoose.model('Byproduct',ProductModel);
